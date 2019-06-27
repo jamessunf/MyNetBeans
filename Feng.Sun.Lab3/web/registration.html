@@ -27,112 +27,38 @@ and open the template in the editor.
 				<table class="center">
 							<tr>
 				       <td><span><span class="required">*</span>First Name:</span></td>
-					   <td><input type="text" name="firstName" maxlength="20" size="20"></td>
+					   <td><input type="text" name="firstName" maxlength="30" size="30"></td>
 					</tr>
 					<tr>
 				        <td><span><span class="required">*</span>Last Name:</span></td>
-					    <td><input type="text" name="lastName" maxlength="20" size="20"></td>
+					    <td><input type="text" name="lastName" maxlength="30" size="30"></td>
 					</tr>
 					
 				    <tr>
 				        <td><span><span class="required">*</span>Student Number:</span></td>
-					    <td><input type="text" name="address"  maxlength="40" size="40"></td>
+                                        <td><input type="text" name="studentNumber"  maxlength="7" size="7" placeholder="XXX XXX" pattern="\d\d\d \d\d\d" class="masked" title="It consists of 3 groups of 3 digits separated by blanks "></td>
 					</tr>
 				    <tr>
 				        <td><span><span class="required">*</span>Birth Date:</span></td>
-					    <td><input type="text" name="city" maxlength="20" size="20"></td>
+					    <td><input type="text" name="birthYear" maxlength="4" size="4" placeholder="YYYY" pattern="\d\d\d\d" class="masked">/
+                                                <input type="text" name="birthMonth" maxlength="2" size="2" placeholder="MM" pattern="\d\d" class="masked">/
+                                                <input type="text" name="birthDay" maxlength="2" size="2" placeholder="DD" pattern="\d\d" class="masked"></td>
 					</tr>
-				    <tr>
-				        <td><span><span class="required">*</span>Province:</span></td>
-						<td>
-						<select name="privnce">					
-						<option value="BC">British Columbia</option>
-						<option value="AB">Alberta</option>
-						<option value="SK">Saskatchewan</option>
-						<option value="MB">Manitoba</option>
-						<option value="ON">Ontario</option>
-						<option value="QC">Quebec</option>
-						<option value="NB">New Brunswick</option>
-						<option value="NS">Nova Scotia</option>
-						<option value="PE">Prince Edward Island</option>
-						<option value="NF">Newfoundland</option>
-						<option value="YK">Yukon</option>
-						<option value="NWT">Northwest Territories</option>
-						<option value="NU">Nunavut</option>
-						
-						</select>
-						</td>
-					</tr>					
+				 			
 					
-				    <tr>
-				        <td><span><span class="required">*</span>Postal Code:</span></td>
-					    <td><input type="text" name="postalCode" maxlength="6" size="6"></td>
-					</tr>					
-				    <tr>
-				        <td><span><span class="required">*</span>Email Address:</span></td>
-					    <td><input type="text" name="email" maxlength="20" size="20"></td>
-					</tr>	
-				    <tr>
-				        <td><span><span class="required">*</span>Home Phone:</span></td>
-					    <td>
-							<input type="text" name="homePhone1" maxlength="3" size="3">
-							-
-							<input type="text" name="homePhone2" maxlength="7" size="7">
-						</td>
-					</tr>	
-				    <tr>
-				        <td><span>Work phone:</span></td>
-					    <td>
-							<input type="text" name="workPhone1" maxlength="3" size="3">
-							-
-							<input type="text" name="workPhone2" maxlength="7" size="7">
-						</td>
-					</tr>	
+
 				</table>
 				</fieldset>
-					
-					
-			<!--/form-->
-			
-				<fieldset>
-				<legend>Payment Information</legend>
-				
-				<table>
-				<tr>
-				<td>
-				Credit Card Type:
-				</td>
-				<td>
-				
-				<input type="radio" name="creditCard" value="visa" checked><img src="images\visa.png" alt="Visa" id="visa"></input>
-				<input type="radio" name="creditCard" value="mastercard" ><img src="images\mastercard.png" alt="mastercard" id="mastercard"></input>
-				<input type="radio" name="creditCard" value="amex" ><img src="images\amex.png" alt="Amex" id=""></input>
-				</td>
-				</tr>
-
-					<tr>
-				       <td>Credit Card Number:</td>
-					   <td><input type="text" name="cardNumber" maxlength="40" size="40"></td>
-					</tr>
-					<tr>
-					   <td>Expiry Date:</td>
-					   <td><input type="text" name="expiryDate" maxlength="5" size="5"></td>
-					</tr>
-					</table>
-				</fieldset>
-				
-				
-				
-				<fieldset>
-				<legend>Agree and Submit</legend>
+			<fieldset>
+				<legend>confirmed all information, then go to next page </legend>
 					<!-- * Agree to Terms and Conditions? | checkbox, value of 'yes' -->
 					<!-- No field name. Place a submit button in one column, and reset button in the other. -->
 					
 					<table>
-					<input type="checkbox" name="terms" value="yes">Check if you agree with out <a>Terms and Conditions</a><br>
-					<input type="submit" name="submit" value="submit"><input type="reset" name="reset" value="Reset">
+					
+					<input type="submit" name="submit" value="Next Page"><input type="reset" name="reset" value="Reset">
 					</table>
-				</fieldset>
+			</fieldset>		
 				
 			</form>
 			
