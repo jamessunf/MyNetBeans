@@ -16,35 +16,28 @@ and open the template in the editor.
 			<header>
 			
 				<h1>Registration</h1>
-				<p>Please enter the following information. Fields marked with an asterisk (<span class="required">*</span>) are required.</p>
+				<p>Please select following courses. Students are permitted to select a maximum of 3 courses.</p>
 			
 			</header>
 			<div id="content">
 			<form action="ConfirmationSev" method="post">
 				
 				<fieldset>
-				<legend>Personal Information</legend>
+				<legend>Course Information</legend>
 				<table class="center">
 							
 				    <tr>
 				        <td><span><span class="required">*</span>course:</span></td>
 						<td>
-						<select name="course">					
-						<option value="BC">British Columbia</option>
-						<option value="AB">Alberta</option>
-						<option value="SK">Saskatchewan</option>
-						<option value="MB">Manitoba</option>
-						<option value="ON">Ontario</option>
-						<option value="QC">Quebec</option>
-						<option value="NB">New Brunswick</option>
-						<option value="NS">Nova Scotia</option>
-						<option value="PE">Prince Edward Island</option>
-						<option value="NF">Newfoundland</option>
-						<option value="YK">Yukon</option>
-						<option value="NWT">Northwest Territories</option>
-						<option value="NU">Nunavut</option>
-						
-						</select>
+                                                    <div>
+                                                    <input type="checkbox" name ="course" value ="Computer Essentials"/>Computer Essentials<br/>
+                                                    <input type="checkbox" name ="course" value ="Introduction to Computer Programming"/>Introduction to Computer Programming<br/>
+                                                    <input type="checkbox" name ="course" value ="Database"/>Database<br/>
+                                                    <input type="checkbox" name ="course" value ="Communications"/>Communications<br/>
+                                                    <input type="checkbox" name ="course" value ="Mathematics"/>Mathematics<br/>
+                                                    <input type="checkbox" name ="course" value ="Operating System"/>Operating System<br/>
+                                                    
+                                                    </div>
 						</td>
 					</tr>					
 					
@@ -52,32 +45,7 @@ and open the template in the editor.
 				</table>
 				</fieldset>
 					
-					
-			<!--/form-->
-			
-				<fieldset>
-				<legend>Payment Information</legend>
-				
-				<table>
-				<tr>
-				<td>
-				Credit Card Type:
-				</td>
-				
-				</tr>
-
-					<tr>
-				       <td>Credit Card Number:</td>
-					   <td><input type="text" name="cardNumber" maxlength="40" size="40"></td>
-					</tr>
-					<tr>
-					   <td>Expiry Date:</td>
-					   <td><input type="text" name="expiryDate" maxlength="5" size="5"></td>
-					</tr>
-					</table>
-				</fieldset>
-				
-				
+		
 				
 				<fieldset>
 				<legend>Agree and Submit</legend>
@@ -85,8 +53,9 @@ and open the template in the editor.
 					<!-- No field name. Place a submit button in one column, and reset button in the other. -->
 					
 					<table>
-					<input type="checkbox" name="terms" value="yes">Check if you agree with out <a>Terms and Conditions</a><br>
+                                            <td>
 					<input type="submit" name="submit" value="submit"><input type="reset" name="reset" value="Reset">
+                                        </td>
 					</table>
 				</fieldset>
 				

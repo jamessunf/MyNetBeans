@@ -7,6 +7,13 @@ package servletConfirmation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.input.DataFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,22 +39,56 @@ public class RegConfirmed extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         
-        String firstName = request.getParameter("firstName");
-        out.println("Hello world!" + firstName);
         
-       // <a href="registration.html">Registration</a>
+        
        
-       String title = "Hello 3";
-        out.println(ServletUtilities.headWithTitle(title) +
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String studentNumber = request.getParameter("studentNumber");
+        String birthDateStr = request.getParameter("birthYear") + request.getParameter("birthMonth") + request.getParameter("birthDay");
+        
+        
+        
+        SimpleDateFormat sdf =new SimpleDateFormat("yyyyMMdd");  
+        Date birthDate = null;
+        Calendar cal = null;
+        Date cmpDate = null;
+        try {
+            birthDate = sdf.parse(birthDateStr);
+            
+           
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(RegConfirmed.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+         cal = Calendar.getInstance();
+            
+            cal.add(Calendar.YEAR, -18);
+            cmpDate = cal.getTime();
+            
+            if (cmpDate.before(birthDate)){
+            
+                String title = "Student's age verification:";
+                out.println(ServletUtilities.headWithTitle(title) +
                 "<BODY BGCOLOR=\"#FDF5E6\">\n" +
-                "<H1>" + title + "</H1>\n" +
-                 
-               "<a href='registration.html'>Registration</a>" +
+                "<H4>" + title + "</H4>\n" +
+                 "<p>Note: The system user at least 18 years old, Please make sure your information again.</p>" +
+               "<a href='registration.html'>Back to Registation Form</a>" +
                       
                 "</BODY></HTML>");
-                
-       // request.getSession().setAttribute("firstName", firstName);
-       // response.sendRedirect("courseselection.html");
+            }else{
+            
+                StudentInfo st = new StudentInfo(firstName,lastName,studentNumber,birthDateStr);
+                request.getSession().setAttribute("st", st);
+        
+                response.sendRedirect("courseselection.html");
+            
+            }
+        
+      
+        
     }
 
     @Override

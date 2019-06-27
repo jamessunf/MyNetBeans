@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author feng
  */
 public class ConfirmationSev extends HttpServlet {
+    
+      
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -32,13 +34,57 @@ public class ConfirmationSev extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         
+        if (request.getParameterValues("course") == null){
+            
+            String title = "Student's courses verification:";
+                out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H4>" + title + "</H4>\n" +
+                 "<p>Note: Please selected at least 1 course, Please select again.</p>" +
+               "<a href='courseselection.html'>Back to Selection</a>" +
+                      
+                "</BODY></HTML>");
+        }else{
+            
+            int records = request.getParameterValues("course").length;
+            
+                       if(records > 3){
+
+                             String title = "Student's courses verification:";
+                               out.println(ServletUtilities.headWithTitle(title) +
+                               "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                               "<H4>" + title + "</H4>\n" +
+                                "<p>Note: Student are permitted to select a maximum of 3 courses, Please select again.</p>" +
+                              "<a href='courseselection.html'>Back to Selection</a>" +
+
+                               "</BODY></HTML>");
+                               
+                       }else{
+                              
+                                String[] courses = request.getParameterValues("course");
+                               StudentInfo st = (StudentInfo) request.getSession().getAttribute("st");
+                               String title = "Student's Information:";
+
+                               out.println(ServletUtilities.headWithTitle(title) +
+                               "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                               "<H2>" + title + "</H2>\n" +
+                               "<table class=\"center\">" +
+                               "<tr><td>First Name:" + st.getFirstName() + "</td></tr>" +
+                               "<tr><td>Last Name:" + st.getLastName() + "</td></tr>" +
+                               "<tr><td>Student Number:" + st.getStudentNumber() + "</td></tr>" +
+                               "<tr><td>student Birth Date:" + st.getBirthDate() + "</td></tr>" +
+                               "<tr><td><b> Your courses:</b></td></tr>");
+
+                               for(String cst: courses){                
+                                   out.println("<tr><td>"  + cst + "</td></tr>");
+                               }                             
+                               out.println("</BODY></HTML>");
+
+                       }
+            
+            
+        }
         
-        String firstName = (String) request.getSession().getAttribute("firstName");
-        
-        String course = request.getParameter("course");
-        out.println("Hello world!" + firstName + course);
-        //request.getSession().setAttribute("firstName", firstName);
-        //response.sendRedirect("courseselection.html");
     }
 
     @Override
