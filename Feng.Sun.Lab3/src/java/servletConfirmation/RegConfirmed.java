@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author feng
  */
-public class ConfirmationSev extends HttpServlet {
+public class RegConfirmed extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -32,13 +32,22 @@ public class ConfirmationSev extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         
+        String firstName = request.getParameter("firstName");
+        out.println("Hello world!" + firstName);
         
-        String firstName = (String) request.getSession().getAttribute("firstName");
-        
-        String course = request.getParameter("course");
-        out.println("Hello world!" + firstName + course);
-        //request.getSession().setAttribute("firstName", firstName);
-        //response.sendRedirect("courseselection.html");
+       // <a href="registration.html">Registration</a>
+       
+       String title = "Hello 3";
+        out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H1>" + title + "</H1>\n" +
+                 
+               "<a href='registration.html'>Registration</a>" +
+                      
+                "</BODY></HTML>");
+                
+       // request.getSession().setAttribute("firstName", firstName);
+       // response.sendRedirect("courseselection.html");
     }
 
     @Override
