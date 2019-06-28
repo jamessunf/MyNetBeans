@@ -45,7 +45,7 @@ public class RegConfirmed extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String studentNumber = request.getParameter("studentNumber");
-        String birthDateStr = request.getParameter("birthYear") + request.getParameter("birthMonth") + request.getParameter("birthDay");
+        String birthDateStr = request.getParameter("birthYear") + "-" + request.getParameter("birthMonth") + "-" + request.getParameter("birthDay");
         
         
         
@@ -70,11 +70,11 @@ public class RegConfirmed extends HttpServlet {
             
             if (cmpDate.before(birthDate)){
             
-                String title = "Student's age verification:";
+                String title = "Oops, that's a problem";
                 out.println(ServletUtilities.headWithTitle(title) +
                 "<BODY BGCOLOR=\"#FDF5E6\">\n" +
                 "<H4>" + title + "</H4>\n" +
-                 "<p>Note: The system user at least 18 years old, Please make sure your information again.</p>" +
+                 "<p>Note: The system user at least 18 years old, Please make sure your information is right, and try again.</p>" +
                "<a href='registration.html'>Back to Registation Form</a>" +
                       
                 "</BODY></HTML>");

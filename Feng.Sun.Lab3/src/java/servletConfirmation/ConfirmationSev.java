@@ -36,12 +36,12 @@ public class ConfirmationSev extends HttpServlet {
         
         if (request.getParameterValues("course") == null){
             
-            String title = "Student's courses verification:";
+            String title = "Oops, that's a problem";
                 out.println(ServletUtilities.headWithTitle(title) +
                 "<BODY BGCOLOR=\"#FDF5E6\">\n" +
                 "<H4>" + title + "</H4>\n" +
-                 "<p>Note: Please selected at least 1 course, Please select again.</p>" +
-               "<a href='courseselection.html'>Back to Selection</a>" +
+                 "<p>Note: You must select at least 1 course. Please click back link, try again.</p>" +
+               "<a href='courseselection.html'>Back >>></a>" +
                       
                 "</BODY></HTML>");
         }else{
@@ -50,12 +50,12 @@ public class ConfirmationSev extends HttpServlet {
             
                        if(records > 3){
 
-                             String title = "Student's courses verification:";
+                             String title = "Oops, that's a problem";
                                out.println(ServletUtilities.headWithTitle(title) +
                                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
                                "<H4>" + title + "</H4>\n" +
-                                "<p>Note: Student are permitted to select a maximum of 3 courses, Please select again.</p>" +
-                              "<a href='courseselection.html'>Back to Selection</a>" +
+                                "<p>Note: Student are permitted to select a maximum of 3 courses, Please click back link, try again.</p>" +
+                              "<a href='courseselection.html'>Back >>></a>" +
 
                                "</BODY></HTML>");
                                
@@ -63,22 +63,38 @@ public class ConfirmationSev extends HttpServlet {
                               
                                 String[] courses = request.getParameterValues("course");
                                StudentInfo st = (StudentInfo) request.getSession().getAttribute("st");
-                               String title = "Student's Information:";
+                               
+                               out.println(
+                               "<html><head><title>Lab 3 by Feng Sun</title><meta charset=\"utf-8\">" +
+                               "<link rel=\"stylesheet\" type=\"text/css\" href=\"css\\style.css\"></head>");
 
-                               out.println(ServletUtilities.headWithTitle(title) +
-                               "<BODY BGCOLOR=\"#FDF5E6\">\n" +
-                               "<H2>" + title + "</H2>\n" +
-                               "<table class=\"center\">" +
-                               "<tr><td>First Name:" + st.getFirstName() + "</td></tr>" +
-                               "<tr><td>Last Name:" + st.getLastName() + "</td></tr>" +
-                               "<tr><td>Student Number:" + st.getStudentNumber() + "</td></tr>" +
-                               "<tr><td>student Birth Date:" + st.getBirthDate() + "</td></tr>" +
-                               "<tr><td><b> Your courses:</b></td></tr>");
+                               
+                               out.println("<body><div id=\"wrapper\"><header><h1>Registration Information</h1></header><div id=\"content\">" +
+                                "<fieldset><legend>Student's Information</legend>" +
+                                "<table border = \"1\" class=\"center\">" +
+                               
+                               
+                               "<tr><td>First Name</td><td>" + st.getFirstName() + "</td></tr>" +
+                               "<tr><td>Last Name</td><td>" + st.getLastName() + "</td></tr>" +
+                               "<tr><td>Student Number</td><td>" + st.getStudentNumber() + "</td></tr>" +
+                               "<tr><td>student Birth Date</td><td>" + st.getBirthDate() + "</td></tr>" +
+                               "</table></fieldset>");
+                               
+                               out.println(
+                               
+                               "<fieldset><legend>Courses Information</legend><table class=\"center\">"
+                                    
+                               
+                               
+                               );
+                               
+                               int n =1;
 
                                for(String cst: courses){                
-                                   out.println("<tr><td>"  + cst + "</td></tr>");
+                                   out.println("<tr><td>" + n + "</td><td>"  + cst + "</td></tr>");
+                                   n++;
                                }                             
-                               out.println("</BODY></HTML>");
+                               out.println("</table></fieldset> </div><footer><p>&copy;2019 CST8288. All rights reserved.</p></footer></div></body></html>");
 
                        }
             
