@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Course: CST8288_521 OOP with Design Patterns
+ * Assignment: Lab3
+ * Project Purpose: Registration Application using Servlets.
+ * 
+ * File Name: RegConfirmed.java 
+ * Professor: George Kriger
+ * Author: Feng Sun
+ * Date: Jun/27/2019
  */
 package servletConfirmation;
 
@@ -20,8 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *a Servlet deal with student register form information
  * @author feng
+ * @version 1.0.0
  */
 public class RegConfirmed extends HttpServlet {
 
@@ -40,7 +46,26 @@ public class RegConfirmed extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         
-        
+      if (request.getParameter("firstName") == null || 
+              request.getParameter("lastName") ==null ||
+              request.getParameter("studentNumber") == null ||
+              request.getParameter("birthYear") == null ||
+              request.getParameter("birthMonth") == null ||
+              request.getParameter("birthDay") == null
+              ){
+          
+                String title = "Oops, that's a problem";
+                out.println(ServletUtilities.headWithTitle(title) +
+                "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                "<H4>" + title + "</H4>\n" +
+                 "<p>Note: please fill all information</p>" +
+               "<a href='registration.html'>Back to Registation Form</a>" +
+                      
+                "</BODY></HTML>");
+      
+      
+      
+      } else{ 
        
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -86,11 +111,18 @@ public class RegConfirmed extends HttpServlet {
                 response.sendRedirect("courseselection.html");
             
             }
-        
+      }  
       
         
     }
-
+ /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param req servlet request
+     * @param resp servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req,resp);

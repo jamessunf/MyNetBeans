@@ -1,18 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Course: CST8288_521 OOP with Design Patterns
+ * Assignment: Lab3
+ * Project Purpose: Registration Application using Servlets.
+ * 
+ * File Name: ServletUtilities.java 
+ * Professor: George Kriger
+ * Author: Feng Sun
+ * Date: Jun/27/2019
  */
 package servletConfirmation;
 
 /**
- *
+ *the Utilities class to per-write HTML context
  * @author feng
  */
 public class ServletUtilities {
-    
+    /**
+     * a head of HTML
+     */
     public static final String DOCTYPE = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " + "Transitional//EN\">\n"; 
-    
+    /**
+     * the title and head of the HTML context
+     * @param title String value accepts form clients for the title of the Html context
+     * @return String that the html context
+     */
     public static String headWithTitle(String title){
         
          return (DOCTYPE + "\n" +
@@ -21,24 +32,6 @@ public class ServletUtilities {
     
     }
     
-   
-    
-   public static String filter(String input){
-       
-       
-       StringBuffer filtered = new StringBuffer(input.length());
-       char c;
-       for(int i=0; i<input.length(); i++) {
-           c = input.charAt(i);
-           switch(c) {
-               case '<': filtered.append("&lt;"); break;
-               case '>': filtered.append("&gt;"); break;             
-               case '"': filtered.append("&quot;"); break;
-               case '&': filtered.append("&amp;"); break;
-               default: filtered.append(c);
-           }
-       }
-       
-       return(filtered.toString());}
+  
     
 }

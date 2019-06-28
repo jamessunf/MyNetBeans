@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Course: CST8288_521 OOP with Design Patterns
+ * Assignment: Lab3
+ * Project Purpose: Registration Application using Servlets.
+ * 
+ * File Name: ConfirmationSev.java 
+ * Professor: George Kriger
+ * Author: Feng Sun
+ * Date: Jun/27/2019
  */
 package servletConfirmation;
 
@@ -13,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *a Servlet deal with student courses selection
+ * 
  * @author feng
  */
 public class ConfirmationSev extends HttpServlet {
@@ -102,7 +108,14 @@ public class ConfirmationSev extends HttpServlet {
         }
         
     }
-
+   /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param req servlet request
+     * @param resp servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req,resp);
